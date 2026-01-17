@@ -118,6 +118,15 @@ h1:focus {
     padding: 3px;
 }
 
+.backspace-key {
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: central;
+    height: 50px;
+    width: 40px;
+    padding: 3px;
+}
+
 .keyboard-row {
     margin: 3px;
 }
