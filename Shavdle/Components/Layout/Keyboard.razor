@@ -63,17 +63,20 @@
 
 </div>
 
-<p>@ClickedLetter</p>
 @code {
     string ClickedLetter = "Nothing Clicked";
 
+    [Parameter]
+    public EventCallback<string> KeyClickedCallBack { get; set; }
+    [Parameter]
+    public EventCallback BackspaceCallBack { get; set; }
+
     void ShavianKeyClick(string key)
     {
-        ClickedLetter = key;
-        StateHasChanged();
+        KeyClickedCallBack.InvokeAsync(key);
     }
     void Backspace()
     {
-        
+        BackspaceCallBack.InvokeAsync();
     }
 }
