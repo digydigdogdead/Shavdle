@@ -1,5 +1,16 @@
 ﻿
-<p>@targetWord</p>
+<div class="letter-grid">
+  @for (int i = 0; i < 4; i++)
+    {
+    <div class="answer-grid">
+        @for (int j = 0; j < 4; j++)
+            {
+            <p class="letter-grid-cell" id="@($"{i}{j}")">a</p>
+            }
+    </div>
+    }
+</div>
+
 
 @code {
     string targetWord = "𐑩𐑤𐑲𐑝";
