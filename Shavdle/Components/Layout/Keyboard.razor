@@ -1,65 +1,79 @@
-﻿<div>
+﻿@rendermode InteractiveServer
+
+<div>
     <div class="keyboard-row" id="tall">
-        <button class="keyboard-key">𐑐</button>
-        <button class="keyboard-key">𐑑</button>
-        <button class="keyboard-key">𐑒</button>
-        <button class="keyboard-key">𐑓</button>
-        <button class="keyboard-key">𐑔</button>
-        <button class="keyboard-key">𐑕</button>
-        <button class="keyboard-key">𐑖</button>
-        <button class="keyboard-key">𐑗</button>
-        <button class="keyboard-key">𐑘</button>
-        <button class="keyboard-key">𐑙</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑐")'>𐑐</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑑")'>𐑑</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑒")'>𐑒</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑓")'>𐑓</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑔")'>𐑔</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑕")'>𐑕</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑖")'>𐑖</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑗")'>𐑗</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑘")'>𐑘</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑙")'>𐑙</button>
     </div>
     <div class="keyboard-row" id="deep">
-        <button class="keyboard-key">𐑚</button>
-        <button class="keyboard-key">𐑛</button>
-        <button class="keyboard-key">𐑜</button>
-        <button class="keyboard-key">𐑝</button>
-        <button class="keyboard-key">𐑞</button>
-        <button class="keyboard-key">𐑟</button>
-        <button class="keyboard-key">𐑠</button>
-        <button class="keyboard-key">𐑡</button>
-        <button class="keyboard-key">𐑢</button>
-        <button class="keyboard-key">𐑣</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑚")'>𐑚</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑛")'>𐑛</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑜")'>𐑜</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑝")'>𐑝</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑞")'>𐑞</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑟")'>𐑟</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑠")'>𐑠</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑡")'>𐑡</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑢")'>𐑢</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑣")'>𐑣</button>
     </div>
     <div class="keyboard-row" id="short1">
-        <button class="keyboard-key">𐑤</button>
-        <button class="keyboard-key">𐑥</button>
-        <button class="keyboard-key">𐑦</button>
-        <button class="keyboard-key">𐑧</button>
-        <button class="keyboard-key">𐑨</button>
-        <button class="keyboard-key">𐑩</button>
-        <button class="keyboard-key">𐑪</button>
-        <button class="keyboard-key">𐑫</button>
-        <button class="keyboard-key">‹</button>
-        <button class="keyboard-key">𐑭</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑤")'>𐑤</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑥")'>𐑥</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑦")'>𐑦</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑧")'>𐑧</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑨")'>𐑨</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑩")'>𐑩</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑪")'>𐑪</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑫")'>𐑫</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("‹")'>‹</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑭")'>𐑭</button>
     </div>
     <div class="keyboard-row" id="short2">
-        <button class="keyboard-key">𐑮</button>
-        <button class="keyboard-key">𐑯</button>
-        <button class="keyboard-key">𐑰</button>
-        <button class="keyboard-key">𐑱</button>
-        <button class="keyboard-key">𐑲</button>
-        <button class="keyboard-key">𐑳</button>
-        <button class="keyboard-key">𐑴</button>
-        <button class="keyboard-key">𐑵</button>
-        <button class="keyboard-key">›</button>
-        <button class="keyboard-key">𐑷</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑮")'>𐑮</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑯")'>𐑯</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑰")'>𐑰</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑱")'>𐑱</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑲")'>𐑲</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑳")'>𐑳</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑴")'>𐑴</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑵")'>𐑵</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("›")'>›</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑷")'>𐑷</button>
     </div>
     <div class="keyboard-row" id="compound">
-        <button class="keyboard-key">𐑸</button>
-        <button class="keyboard-key">𐑹</button>
-        <button class="keyboard-key">𐑺</button>
-        <button class="keyboard-key">𐑻</button>
-        <button class="keyboard-key">𐑼</button>
-        <button class="keyboard-key">𐑽</button>
-        <button class="keyboard-key">𐑾</button>
-        <button class="keyboard-key">𐑿</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑸")'>𐑸</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑹")'>𐑹</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑺")'>𐑺</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑻")'>𐑻</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑼")'>𐑼</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑽")'>𐑽</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑾")'>𐑾</button>
+        <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑿")'>𐑿</button>
+        <button class="backspace-key" @onclick="() => Backspace()">⬅️</button>
     </div>
 
 </div>
 
+<p>@ClickedLetter</p>
 @code {
+    string ClickedLetter = "Nothing Clicked";
 
+    void ShavianKeyClick(string key)
+    {
+        ClickedLetter = key;
+        StateHasChanged();
+    }
+    void Backspace()
+    {
+        
+    }
 }
