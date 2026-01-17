@@ -16,11 +16,37 @@
             2. There's a lot more letters than in the latin alphabet, so you get 7 attempts to narrow it down.
             𐑜𐑫𐑛 𐑤𐑳𐑒! (Good luck!)
         </p>
-        <a href="https://shavian.info/alphabet/">Learn what the letters are over on shavian.info!</a>
+        <NavLink href="https://shavian.info/alphabet/" target="_blank">Learn what the letters are over on shavian.info!</NavLink>
     </div>
     <div class="centre" id="puzzle-area">
-        <AnswerGrid />
+        <AnswerGrid FirstChar="@Guesses[0]" SecondChar="@Guesses[1]" ThirdChar="@Guesses[2]" FourthChar="@Guesses[3]"/>
         <LetterGrid />
-        <Keyboard />
+        <Keyboard KeyClickedCallBack="ShavianKeySelected" BackspaceCallBack="BackspaceSelected"/>
     </div>
 </div>
+
+@code {
+    string KeySelected = "None"; //for checking
+    int CurrentIndex = 0;
+    string[] Guesses = ["", "", "", ""];
+
+    void ShavianKeySelected(string key)
+    {
+        if (CurrentIndex < 4)
+        {
+            Guesses[CurrentIndex] = key;
+            if (CurrentIndex < 4) CurrentIndex++;
+            StateHasChanged();
+        }
+    }
+
+    void BackspaceSelected()
+    {
+        if (Guesses[0] == "" && CurrentIndex == 0) return;
+
+        if (CurrentIndex > 0) CurrentIndex--;
+        Guesses[CurrentIndex] = "";
+
+        StateHasChanged();
+    }
+}
