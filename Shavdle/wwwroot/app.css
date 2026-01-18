@@ -109,17 +109,24 @@ h1:focus {
     color: white;
 }
 
-.keyboard-key {
-    font-size: 2rem;
-    text-align: center;
-    vertical-align: central;
-    height: 50px;
-    width: 40px;
-    padding: 3px;
+.letter-grid-cell.unset {
+    background-color: transparent;
 }
 
-.backspace-key {
-    font-size: 1rem;
+.letter-grid-cell.correct {
+    background-color: green;
+}
+
+.letter-grid-cell.misplaced {
+    background-color: orange;
+}
+
+.letter-grid-cell.incorrect {
+    background-color: gray;
+}
+
+.keyboard-key {
+    font-size: 2rem;
     text-align: center;
     vertical-align: central;
     height: 50px;

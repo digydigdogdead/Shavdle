@@ -58,14 +58,12 @@
         <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑽")'>𐑽</button>
         <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑾")'>𐑾</button>
         <button class="keyboard-key" @onclick='() => ShavianKeyClick("𐑿")'>𐑿</button>
-        <button class="backspace-key" @onclick="() => Backspace()">⬅️</button>
+        <button class="keyboard-key" style="width: 85px;" @onclick="() => Backspace()">⬅️</button>
     </div>
 
 </div>
 
 @code {
-    string ClickedLetter = "Nothing Clicked";
-
     [Parameter]
     public EventCallback<string> KeyClickedCallBack { get; set; }
     [Parameter]
