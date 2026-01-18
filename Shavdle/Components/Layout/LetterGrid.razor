@@ -23,15 +23,16 @@
 </div>
 *@
 
-<GuessGrid Guess="@FirstGuess" CorrectAnswer="@targetWord" />
-<GuessGrid Guess="@SecondGuess" CorrectAnswer="@targetWord" />
-<GuessGrid Guess="@ThirdGuess" CorrectAnswer="@targetWord" />
-<GuessGrid Guess="@FourthGuess" CorrectAnswer="@targetWord" />
-<GuessGrid Guess="@FifthGuess" CorrectAnswer="@targetWord" />
-<GuessGrid Guess="@SixthGuess" CorrectAnswer="@targetWord" />
-<GuessGrid Guess="@SeventhGuess" CorrectAnswer="@targetWord" />
+<GuessGrid Guess="@FirstGuess" CorrectAnswer="@TargetWord" />
+<GuessGrid Guess="@SecondGuess" CorrectAnswer="@TargetWord" />
+<GuessGrid Guess="@ThirdGuess" CorrectAnswer="@TargetWord" />
+<GuessGrid Guess="@FourthGuess" CorrectAnswer="@TargetWord" />
+<GuessGrid Guess="@FifthGuess" CorrectAnswer="@TargetWord" />
+<GuessGrid Guess="@SixthGuess" CorrectAnswer="@TargetWord" />
+<GuessGrid Guess="@SeventhGuess" CorrectAnswer="@TargetWord" />
 @code {
-    string[] targetWord = ["𐑩", "𐑤", "𐑲", "𐑝"];
+    [Parameter, EditorRequired]
+    public string[] TargetWord { get; set; }
 
     [Parameter]
     public string[] FirstGuess 
