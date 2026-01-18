@@ -1,0 +1,48 @@
+﻿@rendermode InteractiveServer
+
+<div class="answer-grid">
+    <p class="letter-grid-cell @CellClasses[0]">@Guess[0]</p>
+    <p class="letter-grid-cell @CellClasses[1]">@Guess[1]</p>
+    <p class="letter-grid-cell @CellClasses[2]">@Guess[2]</p>
+    <p class="letter-grid-cell @CellClasses[3]">@Guess[3]</p>
+</div>
+
+@code {
+    string[] CellClasses = ["unset", "unset", "unset", "unset"];
+
+    [Parameter]
+    public string[] Guess 
+    { 
+        get { return field; }
+        set
+        {
+            field = value;
+            ValidateGuess();
+        }
+    } = ["", "", "", ""];
+
+    [Parameter]
+    public string[] CorrectAnswer { get; set; } = ["", "", "", ""];
+
+    void ValidateGuess()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (Guess[i] == CorrectAnswer[i])
+            {
+                CellClasses[i] = "correct";
+            }
+            else if (CorrectAnswer.Contains(Guess[i]))
+            {
+                CellClasses[i] = "misplaced";
+            }
+            else
+            {
+                CellClasses[i] = "incorrect";
+            }
+        }
+
+        StateHasChanged();
+    }
+}
+

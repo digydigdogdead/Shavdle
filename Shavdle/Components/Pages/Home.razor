@@ -17,18 +17,28 @@
             𐑜𐑫𐑛 𐑤𐑳𐑒! (Good luck!)
         </p>
         <NavLink href="https://shavian.info/alphabet/" target="_blank">Learn what the letters are over on shavian.info!</NavLink>
+        <Keyboard KeyClickedCallBack="ShavianKeySelected" BackspaceCallBack="BackspaceSelected"/>
     </div>
     <div class="centre" id="puzzle-area">
-        <AnswerGrid FirstChar="@Guesses[0]" SecondChar="@Guesses[1]" ThirdChar="@Guesses[2]" FourthChar="@Guesses[3]"/>
-        <LetterGrid />
-        <Keyboard KeyClickedCallBack="ShavianKeySelected" BackspaceCallBack="BackspaceSelected"/>
+        <AnswerGrid SubmitGuessCallBack="SubmitGuess" FirstChar="@Guesses[0]" SecondChar="@Guesses[1]" ThirdChar="@Guesses[2]" FourthChar="@Guesses[3]"/>
+        <br />
+        <LetterGrid FirstGuess="@FirstWord" SecondGuess="@SecondWord" ThirdGuess="@ThirdWord" FourthGuess="@FourthWord" 
+                    FifthGuess="@FifthWord" SixthGuess="@SixthWord" SeventhGuess="@SeventhWord"/>
     </div>
 </div>
 
-@code {
-    string KeySelected = "None"; //for checking
+@code 
+{
     int CurrentIndex = 0;
+    int NumGuesses = 0;
     string[] Guesses = ["", "", "", ""];
+    string[] FirstWord = ["", "", "", ""];
+    string[] SecondWord = ["", "", "", ""];
+    string[] ThirdWord = ["", "", "", ""];
+    string[] FourthWord = ["", "", "", ""];
+    string[] FifthWord = ["", "", "", ""];
+    string[] SixthWord = ["", "", "", ""];
+    string[] SeventhWord = ["", "", "", ""];
 
     void ShavianKeySelected(string key)
     {
@@ -48,5 +58,26 @@
         Guesses[CurrentIndex] = "";
 
         StateHasChanged();
+    }
+
+    void SubmitGuess(string[] guess)
+    {
+        if (NumGuesses == 0) FirstWord = guess;
+        else if (NumGuesses == 1) SecondWord = guess;
+        else if (NumGuesses == 2) ThirdWord = guess;
+        else if (NumGuesses == 3) FourthWord = guess;
+        else if (NumGuesses == 4) FifthWord = guess;
+        else if (NumGuesses == 5) SixthWord = guess;
+        else if (NumGuesses == 6) SeventhWord = guess;
+
+        if (NumGuesses < 7)
+        {
+            NumGuesses++;
+            Guesses = ["", "", "", ""];
+            CurrentIndex = 0;
+            StateHasChanged();
+        }
+        
+
     }
 }

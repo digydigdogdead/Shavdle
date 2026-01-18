@@ -5,11 +5,14 @@
     <p class="inputLetter">@SecondChar</p>
     <p class="inputLetter">@ThirdChar</p>
     <p class="inputLetter">@FourthChar</p>
-    <button class="submitButton">↵</button>
-
+    <button class="submitButton" disabled="@(!FullWord)" @onclick="SubmitGuess">↵</button>
 </div>
 
 @code {
+    bool FullWord = false;
+
+    [Parameter]
+    public EventCallback<string[]> SubmitGuessCallBack { get; set; }
     [Parameter]
     public string FirstChar
     { 
@@ -47,9 +50,28 @@
         set 
         {
             field = value;
+            if (value != "" && FirstChar != "" && SecondChar != "" && ThirdChar != "")
+            {
+                FullWord = true;
+            }
+            else
+            {
+                FullWord = false;
+            }
             StateHasChanged(); 
         } 
     } = "";
 
-    string completedWord = string.Empty;
+    void SubmitGuess()
+    {
+        var guess = new string[] { FirstChar, SecondChar, ThirdChar, FourthChar };
+
+        //actual
+        FirstChar = "";
+        SecondChar = "";
+        ThirdChar = "";
+        FourthChar = "";
+        StateHasChanged();
+        SubmitGuessCallBack.InvokeAsync(guess);
+    }
 }

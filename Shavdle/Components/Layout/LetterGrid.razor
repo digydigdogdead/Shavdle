@@ -1,17 +1,108 @@
-﻿
+﻿@rendermode InteractiveServer
+@*
 <div class="letter-grid">
   @for (int i = 0; i < 7; i++)
     {
     <div class="answer-grid">
         @for (int j = 0; j < 4; j++)
             {
-            <p class="letter-grid-cell" id="@($"{i}{j}")">a</p>
+            <p class="letter-grid-cell" @ref="@($"Cell{i}{j}")">a</p>
             }
     </div>
     }
 </div>
 
 
+<div class="letter-grid">
+    <div class="answer-grid" id="guess1">
+        <p class="letter-grid-cell" id="Cell11">@FirstGuess[0]</p>
+        <p class="letter-grid-cell" id="Cell12">@FirstGuess[1]</p>
+        <p class="letter-grid-cell" id="Cell13">@FirstGuess[2]</p>
+        <p class="letter-grid-cell" id="Cell14">@FirstGuess[3]</p>
+    </div>
+</div>
+*@
+
+<GuessGrid Guess="@FirstGuess" CorrectAnswer="@targetWord" />
+<GuessGrid Guess="@SecondGuess" CorrectAnswer="@targetWord" />
+<GuessGrid Guess="@ThirdGuess" CorrectAnswer="@targetWord" />
+<GuessGrid Guess="@FourthGuess" CorrectAnswer="@targetWord" />
+<GuessGrid Guess="@FifthGuess" CorrectAnswer="@targetWord" />
+<GuessGrid Guess="@SixthGuess" CorrectAnswer="@targetWord" />
+<GuessGrid Guess="@SeventhGuess" CorrectAnswer="@targetWord" />
 @code {
-    string targetWord = "𐑩𐑤𐑲𐑝";
+    string[] targetWord = ["𐑩", "𐑤", "𐑲", "𐑝"];
+
+    [Parameter]
+    public string[] FirstGuess 
+    { 
+        get { return field; } 
+        set 
+        { 
+            field = value;
+            StateHasChanged();
+        } 
+    } = ["", "", "", ""];
+    [Parameter]
+    public string[] SecondGuess
+    {
+        get { return field; }
+        set
+        {
+            field = value;
+            StateHasChanged();
+        }
+    } = ["", "", "", ""];
+    [Parameter]
+    public string[] ThirdGuess
+    {
+        get { return field; }
+        set
+        {
+            field = value;
+            StateHasChanged();
+        }
+    } = ["", "", "", ""];
+    [Parameter]
+    public string[] FourthGuess
+    {
+        get { return field; }
+        set
+        {
+            field = value;
+            StateHasChanged();
+        }
+    } = ["", "", "", ""];
+    [Parameter]
+    public string[] FifthGuess
+    {
+        get { return field; }
+        set
+        {
+            field = value;
+            StateHasChanged();
+        }
+    } = ["", "", "", ""];
+    [Parameter]
+    public string[] SixthGuess
+    {
+        get { return field; }
+        set
+        {
+            field = value;
+            StateHasChanged();
+        }
+    } = ["", "", "", ""];
+    [Parameter]
+    public string[] SeventhGuess
+    {
+        get { return field; }
+        set
+        {
+            field = value;
+            StateHasChanged();
+        }
+    } = ["", "", "", ""];
+
 }
+
