@@ -141,6 +141,14 @@ h1:focus {
 .about-shavdle {
     text-align: center;
     margin: auto;
-    margin-bottom: 15px;
-    
+    margin-bottom: 15px;   
+}
+
+.game-over-screen {
+    text-align: center;
+    margin: auto;
+    border: 5px solid gray;
+    background-color: white;
+    color: black;
+    padding: 50px;
 }

@@ -1,5 +1,6 @@
 ﻿@page "/"
 @rendermode InteractiveServer
+@using MudBlazor
 
 <PageTitle>Shavdle</PageTitle>
 
@@ -12,25 +13,39 @@
             The latin alphabet is somewhat flawed when it comes to english, as it doesn't contain letters that reflect all of the different sounds that people use to speak English.
             The Shavian alphabet was designed to better reflect the complex language that is English.
             In Shavian there is a letter for ever phonetic sound used in the English language, eliminating pesky confusing things like silent letters, double letters, and words that are spelled nothing like how they sound (looking at you "cough").
-            This results in 2 things: 1. words written with Shavian are often shorter, so in this game there's only 4 letters to guess.
-            2. There's a lot more letters than in the latin alphabet, so you get 7 attempts to narrow it down.
-            𐑜𐑫𐑛 𐑤𐑳𐑒! (Good luck!)
+            This results in 2 things:</p> 
+            <p>
+            1. words written with Shavian are often shorter, so in this game there's only 4 letters to guess. </p>
+            
+            <p>2. There's a lot more letters than in the latin alphabet, so you get 7 attempts to narrow it down. </p>
+           <p> 𐑜𐑫𐑛 𐑤𐑳𐑒! (Good luck!)
         </p>
         <NavLink href="https://shavian.info/alphabet/" target="_blank">Learn what the letters are over on shavian.info!</NavLink>
+        <p>Click the letters below to get started:</p>
         <Keyboard KeyClickedCallBack="ShavianKeySelected" BackspaceCallBack="BackspaceSelected"/>
     </div>
     <div class="centre" id="puzzle-area">
         <AnswerGrid SubmitGuessCallBack="SubmitGuess" FirstChar="@Guesses[0]" SecondChar="@Guesses[1]" ThirdChar="@Guesses[2]" FourthChar="@Guesses[3]"/>
         <br />
-        <LetterGrid FirstGuess="@FirstWord" SecondGuess="@SecondWord" ThirdGuess="@ThirdWord" FourthGuess="@FourthWord" 
+        <LetterGrid TargetWord="@Answer" FirstGuess="@FirstWord" SecondGuess="@SecondWord" ThirdGuess="@ThirdWord" FourthGuess="@FourthWord" 
                     FifthGuess="@FifthWord" SixthGuess="@SixthWord" SeventhGuess="@SeventhWord"/>
     </div>
 </div>
+<MudBlazor.MudOverlay Visible="@GameFinished" AutoClose="true" DarkBackground>
+    <div class="game-over-screen">
+        <h3>@GameOverTitle</h3>
+        <p>@GameOverMessage</p>
+    </div>
+
+</MudBlazor.MudOverlay>
 
 @code 
 {
     int CurrentIndex = 0;
     int NumGuesses = 0;
+    bool GameFinished = false;
+    string GameOverMessage = "Thanks for playing Shavdle!";
+    string GameOverTitle = "Game Over!";
     string[] Guesses = ["", "", "", ""];
     string[] FirstWord = ["", "", "", ""];
     string[] SecondWord = ["", "", "", ""];
@@ -39,6 +54,8 @@
     string[] FifthWord = ["", "", "", ""];
     string[] SixthWord = ["", "", "", ""];
     string[] SeventhWord = ["", "", "", ""];
+
+    string[] Answer = ["𐑩", "𐑤", "𐑲", "𐑝"];
 
     void ShavianKeySelected(string key)
     {
@@ -76,6 +93,19 @@
             Guesses = ["", "", "", ""];
             CurrentIndex = 0;
             StateHasChanged();
+        }
+
+        if (guess.SequenceEqual(Answer))
+        {
+            GameOverTitle = "Congratulations!";
+            GameOverMessage = "You guessed the word correctly!";
+            GameFinished = true;
+        }
+        else if (NumGuesses == 7)
+        {
+            GameOverTitle = "Game Over!";
+            GameOverMessage = "Better luck next time!";
+            GameFinished = true;
         }
         
 
