@@ -132,6 +132,7 @@ h1:focus {
     height: 50px;
     width: 40px;
     padding: 3px;
+    border: 2px solid gray;
 }
 
 .keyboard-row {
