@@ -1,0 +1,116 @@
+﻿@page "/previous/260118"
+@rendermode InteractiveServer
+@using MudBlazor
+
+<PageTitle>Shavdle</PageTitle>
+
+<h1 class="center-title">𐑖𐑱𐑝𐑛𐑩𐑤 18.01.26</h1>
+<div id="home-columns" class="home-columns">
+    <div id="about">
+        <h3 class="about-shavdle">About Shavdle</h3>
+        <p>
+            This game is like other daily English word guessing games, but uses an alternative english alphabet known as the Shavian alphabet.
+            The latin alphabet is somewhat flawed when it comes to english, as it doesn't contain letters that reflect all of the different sounds that people use to speak English.
+            The Shavian alphabet was designed to better reflect the complex language that is English.
+            In Shavian there is a letter for ever phonetic sound used in the English language, eliminating pesky confusing things like silent letters, double letters, and words that are spelled nothing like how they sound (looking at you "cough").
+            This results in 2 things:
+        </p>
+        <p>
+            1. words written with Shavian are often shorter, so in this game there's only 4 letters to guess.
+        </p>
+
+        <p>2. There's a lot more letters than in the latin alphabet, so you get 7 attempts to narrow it down. </p>
+        <p>
+            𐑜𐑫𐑛 𐑤𐑳𐑒! (Good luck!)
+        </p>
+        <NavLink href="https://shavian.info/alphabet/" target="_blank">Learn what the letters are over on shavian.info!</NavLink>
+        <p>Click the letters below to get started:</p>
+        <Keyboard KeyClickedCallBack="ShavianKeySelected" BackspaceCallBack="BackspaceSelected" />
+    </div>
+    <div class="centre" id="puzzle-area">
+        <AnswerGrid SubmitGuessCallBack="SubmitGuess" FirstChar="@Guesses[0]" SecondChar="@Guesses[1]" ThirdChar="@Guesses[2]" FourthChar="@Guesses[3]" />
+        <br />
+        <LetterGrid TargetWord="@Answer" FirstGuess="@FirstWord" SecondGuess="@SecondWord" ThirdGuess="@ThirdWord" FourthGuess="@FourthWord"
+                    FifthGuess="@FifthWord" SixthGuess="@SixthWord" SeventhGuess="@SeventhWord" />
+    </div>
+</div>
+<MudBlazor.MudOverlay Visible="@GameFinished" AutoClose="true" DarkBackground>
+    <div class="game-over-screen">
+        <h3>@GameOverTitle</h3>
+        <p>@GameOverMessage</p>
+    </div>
+
+</MudBlazor.MudOverlay>
+
+@code
+{
+    int CurrentIndex = 0;
+    int NumGuesses = 0;
+    bool GameFinished = false;
+    string GameOverMessage = "Thanks for playing Shavdle!";
+    string GameOverTitle = "Game Over!";
+    string[] Guesses = ["", "", "", ""];
+    string[] FirstWord = ["", "", "", ""];
+    string[] SecondWord = ["", "", "", ""];
+    string[] ThirdWord = ["", "", "", ""];
+    string[] FourthWord = ["", "", "", ""];
+    string[] FifthWord = ["", "", "", ""];
+    string[] SixthWord = ["", "", "", ""];
+    string[] SeventhWord = ["", "", "", ""];
+
+    string[] Answer = ["𐑩", "𐑤", "𐑲", "𐑝"];
+
+    void ShavianKeySelected(string key)
+    {
+        if (CurrentIndex < 4)
+        {
+            Guesses[CurrentIndex] = key;
+            if (CurrentIndex < 4) CurrentIndex++;
+            StateHasChanged();
+        }
+    }
+
+    void BackspaceSelected()
+    {
+        if (Guesses[0] == "" && CurrentIndex == 0) return;
+
+        if (CurrentIndex > 0) CurrentIndex--;
+        Guesses[CurrentIndex] = "";
+
+        StateHasChanged();
+    }
+
+    void SubmitGuess(string[] guess)
+    {
+        if (NumGuesses == 0) FirstWord = guess;
+        else if (NumGuesses == 1) SecondWord = guess;
+        else if (NumGuesses == 2) ThirdWord = guess;
+        else if (NumGuesses == 3) FourthWord = guess;
+        else if (NumGuesses == 4) FifthWord = guess;
+        else if (NumGuesses == 5) SixthWord = guess;
+        else if (NumGuesses == 6) SeventhWord = guess;
+
+        if (NumGuesses < 7)
+        {
+            NumGuesses++;
+            Guesses = ["", "", "", ""];
+            CurrentIndex = 0;
+            StateHasChanged();
+        }
+
+        if (guess.SequenceEqual(Answer))
+        {
+            GameOverTitle = "Congratulations!";
+            GameOverMessage = "You guessed the word correctly!";
+            GameFinished = true;
+        }
+        else if (NumGuesses == 7)
+        {
+            GameOverTitle = "Game Over!";
+            GameOverMessage = "Better luck next time!";
+            GameFinished = true;
+        }
+
+
+    }
+}

@@ -1,19 +1,12 @@
 ﻿@page "/archive"
 @rendermode InteractiveServer
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Shavdle Archive</PageTitle>
 
-<h1>Counter</h1>
+<h1>Archive</h1>
 
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<NavLink class="archive-link" href="previous/260118">18.01.26</NavLink>
 
 @code {
-    private int currentCount = 0;
 
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
 }
